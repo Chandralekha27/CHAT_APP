@@ -15,6 +15,10 @@ const userSchema = mongoose.Schema(
   { timestaps: true }
 );
 
+userSchema.statics.findByName = function(name) {
+  return this.findOne({ name: name });
+};
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
