@@ -40,12 +40,22 @@ const mongoose = require('mongoose');
 
 // DB connection
 mongoose
-  .connect("mongodb://127.0.0.1:27017/todoapp")
+  .connect("mongodb://127.0.0.1:27017/chat")
   .then(() => {
     console.log("CONNECTED TO DATABASE");
   });
 //---------------DATABASE----------------
 
+
+//---------------BODY PARSER-------------------
+
+const bodyParser = require('body-parser');
+
+// Set extended option explicitly
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+
+//---------------BODY PARSER-------------------
 
 //---------------ROUTES-------------------
 //import routes here
