@@ -11,13 +11,13 @@ function login(event) {
     console.log("into login function")
     event.preventDefault();
     const usernameInput = document.getElementById('Username');
-    const emailInput = document.getElementById('inputContainer');
+    const emailInput = document.getElementById('email-input');
     var passwordInput = document.getElementById('passwordInput');
 
 
     console.log("username -", usernameInput?.value)
     console.log("email -", emailInput?.value)
-    console.log("password", passwordInput?.value)
+    console.log("password -", passwordInput?.value)
 
     if(isRegister){
         fetch("http://localhost:8080/api/user/register", {
@@ -58,7 +58,7 @@ function login(event) {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({name: usernameInput.value, email: emailInput.value, password: passwordInput.value
+                body: JSON.stringify({name: usernameInput.value, password: passwordInput.value
                 })
             })
             .then(response => {
@@ -100,6 +100,7 @@ function toggleInputField(event) {
     const inputContainer = document.getElementById("inputContainer");
     if (!isRegister) {
       const newInput = document.createElement("input");
+      newInput.id = "email-input";
       newInput.type = "email";
       newInput.style.fontFamily = "Rubik";
       newInput.style.width = "100%";
