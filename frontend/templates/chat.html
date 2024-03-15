@@ -6,8 +6,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Rubik:wght@300&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/frontend/static/css/chat.css">
-    <script src="/frontend/static/js/chat.js"></script>
+    <link rel="stylesheet" th:href="@{/css/chat.css}">
+    <script th:src="@{/js/chat.js}"></script>
     <title>Document</title>
 </head>
 <body>
@@ -17,6 +17,39 @@
                 <div class="side-bar-contents" id="chat"></div>
                 <div class="side-bar-contents"id="appointment" ></div>
                 <div class="side-bar-contents"id="medicine"></div>
+            </div>
+            <div onmouseenter="startanimation(this)" onmouseleave="stopanimation(this)" class="side-chat-bar">
+                <div class="side-chat-contents" id="recent-replies">
+                  <div class="reply-profile"></div>
+                </div>
+                <div class="side-chat-contents" id="recent-replies" >
+                  <div class="reply-profile"></div>
+                </div>
+                <div class="side-chat-contents" id="recent-replies">
+                  <div class="reply-profile"></div>
+                </div>
+                <div class="side-chat-contents" id="recent-replies" >
+                  <div class="reply-profile"></div>
+                </div>
+                <div class="side-chat-contents" id="recent-replies">
+                  <div class="reply-profile"></div>
+                </div>
+                <div class="side-chat-contents" id="recent-replies" >
+                  <div class="reply-profile"></div>
+                </div>
+                <div class="side-chat-contents" id="recent-replies">
+                  <div class="reply-profile"></div>
+                </div>
+                <div class="side-chat-contents" id="recent-replies" >
+                  <div class="reply-profile"></div>
+                </div>
+                <div class="side-chat-contents" id="recent-replies">
+                  <div class="reply-profile"></div>
+                </div>
+                <div class="side-chat-contents" id="recent-replies" >
+                  <div class="reply-profile"></div>
+                </div>
+
             </div>
             <div class="main-dashboard">
                 <div class="chat-nav">
