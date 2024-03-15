@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input-message">
+    <button id="send-button">Send</button>
+    <p id="output-message"></p>
+</body>
+<script>
+    const websocket = new WebSocket("ws://192.168.0.101:7071");
+    websocket.onopen =  () => {
+        console.log("connected to websocket");
+    }
+    const sendButton = document.getElementById("send-button");
+    sendButton.addEventListener("click",()=>{
+        console.log("Sending!");
+        websocket.send(document.getElementById("input-message").value);
+    })
+    websocket.onmessage = (message)=>{
+        console.log(message)
+        document.getElementById("output-message").innerHTML = message.data;
+    }
+</script>
+</html>

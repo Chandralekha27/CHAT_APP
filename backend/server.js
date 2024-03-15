@@ -10,8 +10,20 @@ const ws = require('ws');
 
 const wss = new ws.Server({port: 7071});
 
-wss.on('connection',()=>{
-    console.log("Connected to socket")
+var connections = []
+
+wss.on('connection',(ws)=>{
+    console.log("Connected to socket");
+    connections.push(ws);
+    ws.on('message',(message)=>{
+        console.log(message.toString());
+        for(var c of connections){
+            c.send("Hello " + message);
+        }
+    })
+    ws.on ('close', ()=> {
+        connections.filter((a) => { a !=ws });
+    });
 })
 
 //------------WEB SOCKET---------------------
@@ -42,7 +54,7 @@ const mongoose = require('mongoose');
 mongoose
   .connect("mongodb://127.0.0.1:27017/chat")
   .then(() => {
-    console.log("CONNECTED TO DATABASE");
+    console.log("Connected to database");
   });
 //---------------DATABASE----------------
 
@@ -61,8 +73,37 @@ app.use(bodyParser.json())
 //import routes here
 const routes = require("./routes/routes");
 
-app.use("/api", routes);
+app.use("/api/user", routes);
 //---------------ROUTES-------------------
+
+//---------------RENDER-------------------
+
+const path = require('path');
+
+app.get('/dummy',(req,res) => {
+    res.sendFile(path.join(__dirname,'../frontend/templates/dummy.html'))
+    }
+);
+
+app.use(express.static(path.join(__dirname + '../frontend/static')));
+
+app.get('/frontend/static/css/login.css', (req, res) => {
+    res.type('text/css');
+    res.sendFile(path.join(__dirname, '../frontend/static/css/login.css'));
+});
+
+app.get('/frontend/static/js/login.js', (req, res) => {
+    res.type('text/js');
+    res.sendFile(path.join(__dirname, '../frontend/static/js/login.js'));
+});
+
+
+app.get('/api/user/login',(req,res) =>{
+    res.sendFile(path.join(__dirname,'../frontend/templates/login.html'));
+})
+
+//---------------RENDER-------------------
+
 
 //starting server on port given
 app.listen(8080, console.log("Server started on port 8080"));

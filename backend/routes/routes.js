@@ -6,7 +6,7 @@ const {getUserByName, getUser, registerUser, sayHello, loginUser} = require('../
 router.param("username",getUserByName);
 router.get("/getUserByName/:username",getUser);
 router.get("/hello",sayHello);
-router.post("/registerUser",registerUser);
+router.post("/register",registerUser);
 router.post("/login",loginUser);
 
 module.exports = router;
