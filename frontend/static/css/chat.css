@@ -1,3 +1,5 @@
+
+/* write media quiries for width 675px and height 600px */
 body {
     font-family: 'Rubik', sans-serif;
     display: flex;
@@ -72,12 +74,11 @@ transform: scale(0.95);
 
 .side-chat-bar {
     height: 70vh;
-    width: 400px;
+    width:fit-content;
     background-color:#D4D4FA;
     z-index: 0;
     border-radius: 20px;
     margin-left: 20px;
-    padding-right:20px;
     transition: transform 0.5s ease-in-out;
     overflow-y:scroll;
 }
@@ -106,7 +107,7 @@ transform: scale(0.95);
     align-items: flex-start;
     flex-direction: column;
     height: 60px;
-    width: 100vw;
+    width: 20vw;
     background-color: rgb(35, 33, 73);
     border-radius: 0px;
     overflow:hidden;
@@ -393,3 +394,43 @@ border-radius: 50%;
         margin-right: 50px;
     }
 }
+
+
+.replies-container{
+  display:flex;
+  flex-direction:column;
+  width:40vw;
+  align-items:center;
+  
+}
+
+.add-conacts{
+  height:3vh;
+  width:150px;
+  background-color:white;
+  border-radius:20px;
+  margin-bottom:10px;
+  margin-top:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position: sticky;
+  top: 0;
+}
+
+.add-contacts-and-new-message-container{
+  display:flex;
+}
+
+.replies-container-nav{
+  display:flex;
+  width:20vw;
+  height:40px;
+  background-color:pink;
+  align-items:center;
+  justify-content:center;
+  position: sticky;
+  top: 0;
+  
+}
+
